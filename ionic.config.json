@@ -1,0 +1,7 @@
+{
+  "name": "carefi",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
