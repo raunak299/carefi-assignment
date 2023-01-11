@@ -1,24 +1,19 @@
 import {
   IonAlert,
   IonButton,
-  IonButtons,
   IonCard,
-  IonCardContent,
   IonCardHeader,
   IonCardTitle,
   IonCol,
   IonGrid,
   IonHeader,
-  IonIcon,
   IonInput,
   IonItem,
   IonLabel,
   IonPage,
   IonRow,
-  IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import { person, star } from "ionicons/icons";
 
 import { useContext, useRef, useState } from "react";
 import { useHistory, useLocation } from "react-router";
