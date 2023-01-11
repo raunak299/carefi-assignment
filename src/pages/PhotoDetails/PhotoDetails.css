@@ -1,0 +1,14 @@
+ion-card-header.ios {
+    display: flex;
+    flex-flow: column-reverse;
+  }
+
+.title{
+    font-weight:500;
+    font-size:2rem;
+}
+
+.photo{
+    height:50vh;
+    width:100%
+}

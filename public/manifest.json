@@ -1,21 +1,28 @@
 {
-  "short_name": "Ionic App",
-  "name": "My Ionic App",
+  
+    "name": "Qpic",
+    "theme_color": "#2196f3",
+    "background_color": "#2196f3",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/",
   "icons": [
-    {
-      "src": "assets/icon/favicon.png",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "assets/icon/icon.png",
-      "type": "image/png",
-      "sizes": "512x512",
-      "purpose": "maskable"
-    }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff"
+    { "src":"maskable.png",
+    "type":"image/png",
+   "sizes":"281.25*281.25",
+  "purpose":"any maskable"},
+    { "src":"logo192.png",
+      "type":"image/png",
+     "sizes":"192*192"},
+     { "src":"logo256.png",
+     "type":"image/png",
+    "sizes":"256*256"},
+    { "src":"logo383.png",
+    "type":"image/png",
+   "sizes":"384*384"},
+   { "src":"logo512.png",
+   "type":"image/png",
+  "sizes":"512*512"}
+  ]
+
 }

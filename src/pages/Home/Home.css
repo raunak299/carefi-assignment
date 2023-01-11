@@ -1,0 +1,35 @@
+.ion-page{
+    overflow: hidden scroll;
+    padding:3rem 0;
+}
+
+.search-bar div {
+    /* border:none; */
+    border-bottom:solid rgb(155, 155, 155);
+}
+
+
+.img-container{
+    margin-top:4rem;
+}
+
+.img-container ion-col{
+   height:60vh;
+   justify-content: center;
+   margin:1rem ;
+
+}
+
+.img-container ion-col img{
+    height:100%;
+    width: 100%;
+
+
+}
+
+
+.img-container ion-col img:hover{
+    transition:  all 0.3s linear;
+    box-shadow: 0 5px 15px rgb(0 0 0 / 10%);
+    transform: scale(1.02);
+}
