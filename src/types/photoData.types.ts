@@ -5,5 +5,5 @@ export type photoDataType = {
   };
 
   export type photoDetailType = {
-    description:string, downloads:string, likes:string, user : {name:string}
+    description:string, downloads:string, likes:string, user : {name:string}, urls:{regular:''},
   }

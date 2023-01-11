@@ -28,8 +28,7 @@ const Pagination: React.FC<{ keyword: string }> = (props) => {
     setPageList(rangeOfPages(firstPage, lastPage));
   };
 
-  // const [loading,setLoading] = useState(false);
-  const accesskey = "lU77s5_33qBsXTJAAUOa_TfnVPiSnkSz2LmXFpIRzkE";
+  const accesskey = "PTe-wSqxpMzU7WkS5PaFsyAzEyp9JZMWB4XMBxhd7iw";
   useEffect(() => {
     const PHOTO_BY_PAGE_URL = `https://api.unsplash.com/search/photos?page=${currPage}&query=${keyword}&client_id=${accesskey}`;
     (async () => {

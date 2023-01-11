@@ -1,4 +1,4 @@
-import { IonApp, IonRouterOutlet, setupIonicReact } from "@ionic/react";
+import { IonApp, setupIonicReact } from "@ionic/react";
 import { Route, Redirect } from "react-router-dom";
 import { IonReactRouter } from "@ionic/react-router";
 
@@ -22,21 +22,45 @@ import "@ionic/react/css/display.css";
 import "./theme/variables.css";
 import Home from "./pages/Home/Home";
 import PhotoDetails from "./pages/PhotoDetails/PhotoDetails";
+import Login from "./pages/Login/Login";
+
+import { useContext } from "react";
+import AuthContext from "./store/authContext";
+import "./App.css";
 
 setupIonicReact();
 
 const App: React.FC = () => {
-  // const accesskey = "lU77s5_33qBsXTJAAUOa_TfnVPiSnkSz2LmXFpIRzkE";
-  // const secretkey = "XQ7bvHH6rBXc7WaSAV7bWhAW80Rk64ifT3giQcov1Qk";
+  const { login } = useContext(AuthContext);
+  const isAuth = login === "true" ? true : false;
+  // console.log(login);
 
   return (
-    <IonApp>
+    <IonApp className="ion-no-padding">
       <IonReactRouter>
-        <IonRouterOutlet>
-          <Redirect exact from="/" to="/home"></Redirect>
-          <Route exact path="/home" component={Home} />
-          <Route exact path="/photoDetails/:photoId" component={PhotoDetails} />
-        </IonRouterOutlet>
+        <Route path="/" exact>
+          <Redirect to="/home" />
+        </Route>
+
+        <Route exact path="/home">
+          <Home />
+        </Route>
+
+        <Route
+          exact
+          path="/photoDetails/:photoId"
+          render={() => {
+            return isAuth ? <PhotoDetails /> : <Login />;
+          }}
+        />
+
+        <Route exact path="/login">
+          <Login />
+        </Route>
+
+        <Route path="" exact>
+          <Redirect to="/home" />
+        </Route>
       </IonReactRouter>
     </IonApp>
   );

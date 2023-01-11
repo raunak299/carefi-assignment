@@ -6,6 +6,6 @@ export const fetchPhotos = async (url: string) => {
 
 export const fetchPhotoDetails = async (url: string) => {
   const response = await fetch(url);
-  const { description, downloads, likes, user } = await response.json();
-  return { description, downloads, likes, user };
+  const { description, downloads, likes, user, urls } = await response.json();
+  return { description, downloads, likes, user, urls };
 };

@@ -1,6 +1,10 @@
 .ion-page{
-    overflow: hidden scroll;
-    padding:3rem 0;
+    overflow-Y:  scroll;
+    /* padding:3rem 0; */
+}
+
+.search-bar{
+    margin-top:1.5rem;
 }
 
 .search-bar div {
@@ -10,7 +14,7 @@
 
 
 .img-container{
-    margin-top:4rem;
+    margin-top:3rem;
 }
 
 .img-container ion-col{

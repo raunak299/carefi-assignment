@@ -1,59 +1,70 @@
 import {
+  IonButton,
   IonCard,
   IonCardHeader,
   IonCardSubtitle,
   IonCardTitle,
   IonCol,
   IonGrid,
+  IonHeader,
+  IonIcon,
   IonItem,
   IonPage,
   IonRow,
   IonSpinner,
+  IonToolbar,
 } from "@ionic/react";
+import { person } from "ionicons/icons";
 import { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router";
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import { fetchPhotoDetails } from "../../fetchPhotos/fetchPhotos";
 import { photoDetailType } from "../../types/photoData.types";
 import "./PhotoDetails.css";
 
-const PhotoDetails: React.FC<{ photoUrl: string }> = (props) => {
+const PhotoDetails: React.FC = () => {
   const { photoId } = useParams<{ photoId: string }>();
-  type stateType = {
-    photoUrl: string;
-  };
-  const location = useLocation<stateType>();
-
-  let photoUrl = "https://ionicframework.com/docs/img/demos/card-media.png";
-  if (location.state?.photoUrl) {
-    photoUrl = location.state.photoUrl;
-  }
 
   const [photoInfo, setPhotoInfo] = useState<photoDetailType>({
     description: "",
     downloads: "",
     likes: "",
     user: { name: "" },
+    urls: { regular: "" },
   });
-  const accesskey = "lU77s5_33qBsXTJAAUOa_TfnVPiSnkSz2LmXFpIRzkE";
+
+  const accesskey = "PTe-wSqxpMzU7WkS5PaFsyAzEyp9JZMWB4XMBxhd7iw";
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
     const PHOTO_DETAIL_URL = `https://api.unsplash.com/photos/${photoId}?client_id=${accesskey}`;
     (async () => {
-      const { description, downloads, likes, user } = await fetchPhotoDetails(
-        PHOTO_DETAIL_URL
-      );
+      const { description, downloads, likes, user, urls } =
+        await fetchPhotoDetails(PHOTO_DETAIL_URL);
       //   console.log(id);
-      setPhotoInfo({ description, downloads, likes, user });
+      setPhotoInfo({ description, downloads, likes, user, urls });
       setLoading(false);
     })();
   }, [photoId]);
 
   return (
     <IonPage>
-      <IonGrid fixed={true}>
+      <IonHeader>
+        <IonToolbar>
+          <Link to="/login">
+            <IonButton>
+              <IonIcon icon={person} slot="icon-only"></IonIcon>
+            </IonButton>
+          </Link>
+          <Link to="/home">
+            <IonButton>Home</IonButton>
+          </Link>
+        </IonToolbar>
+      </IonHeader>
+
+      <IonGrid fixed={true} className="iop-margin-top">
         {loading && (
-          <IonRow className="ion-justify-content-center ">
+          <IonRow className="ion-justify-content-center ion-margin-top ">
             {loading && (
               <IonItem>
                 <IonSpinner name="circular"></IonSpinner>
@@ -61,13 +72,13 @@ const PhotoDetails: React.FC<{ photoUrl: string }> = (props) => {
             )}
           </IonRow>
         )}
-        {!loading && (
-          <IonRow className="ion-justify-content-center">
+        {!loading && photoInfo.user && (
+          <IonRow className="ion-justify-content-center ion-margin-top">
             <IonCol size-lg="7.5">
               <IonCard>
                 <img
                   alt="Silhouette of mountains"
-                  src={photoUrl}
+                  src={photoInfo.urls.regular}
                   className="photo"
                 />
                 <IonCardHeader>
