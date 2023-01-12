@@ -37,6 +37,7 @@ const Login = () => {
   const loginHandler = (e: React.MouseEvent<HTMLIonButtonElement>) => {
     if (emailRef.current?.value === "" || passwordRef.current?.value === "") {
       setShowAlert(true);
+      return;
     }
     const email = emailRef.current?.value + "" ?? "";
     console.log(location.pathname);
